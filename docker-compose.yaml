@@ -1,0 +1,11 @@
+services:
+  nestjs-demo:
+    image: ng-resume-be
+    build: 
+      context: ./
+      dockerfile: ./demo.Dockerfile
+    container_name: ng-resume-be
+    ports:
+      - '8040:8040'
+    environment:
+      - DB_HOST=host.docker.internal
