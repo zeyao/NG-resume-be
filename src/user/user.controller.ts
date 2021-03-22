@@ -23,6 +23,7 @@ export class UserController {
         this.logger.log(`Create user :  ${user}`)
         return this.userService.createUser(user);
     }
+    
 
 
 
