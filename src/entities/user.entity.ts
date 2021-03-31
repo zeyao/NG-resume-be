@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from "typeorm";
+import { Resume } from "./resume.entity";
 
 @Entity()
 export class User extends BaseEntity {
@@ -16,5 +17,9 @@ export class User extends BaseEntity {
 
     @CreateDateColumn()
     createDate : Date;
+
+    @OneToMany(() => Resume, (resume) => resume.id)
+    resumes : Resume[];
+
 
 }
