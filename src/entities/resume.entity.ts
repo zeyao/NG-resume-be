@@ -1,5 +1,8 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm";
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, OneToMany } from "typeorm";
+import { AwardAndCertification } from "./award.entity";
+import { Education } from "./education.entity";
 import { User } from "./user.entity";
+import { Work } from "./work.entity";
 
 @Entity()
 export class Resume extends BaseEntity {
@@ -29,6 +32,15 @@ export class Resume extends BaseEntity {
 
     @ManyToOne(() => User, (user) => user.id)
     user : User
+
+    @OneToMany(() => Work, (work) => work.id)
+    works : Work[];
+
+    @OneToMany(() => Education, (e) => e.id)
+    educations : Education[];
+
+    @OneToMany(() => AwardAndCertification, (a) => a.id)
+    awardAndCertifications : AwardAndCertification[];
 
     @CreateDateColumn()
     createDate : Date;
