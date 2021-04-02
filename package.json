@@ -20,8 +20,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/ormconfigMigration.ts",
-    "migration": "source localdev.env && yarn typeorm migration:run",
-    "migration:revert": "source localdev.env && yarn typeorm migration:revert",
+    "migration": "source localdev.env && nest build && yarn typeorm migration:run",
+    "migration:revert": "source localdev.env && nest build && yarn typeorm migration:revert",
     "migration:create": "source localdev.env && yarn typeorm migration:generate -n"
   },
   "dependencies": {
