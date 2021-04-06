@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, Patch, Query, UsePipes, ValidationPipe, ParseIntPipe, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Patch, Query, UsePipes, ValidationPipe, Logger } from '@nestjs/common';
 import { User } from 'src/entities/user.entity';
 import { CreateUserDTO } from './dto/createUserDTO';
 
