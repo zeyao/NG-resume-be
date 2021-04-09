@@ -1,11 +1,15 @@
 services:
-  nestjs-demo:
-    image: ng-resume-be
+  ng-resume-be-1:
+    image: ng-resume-be-1
     build: 
       context: ./
       dockerfile: ./demo.Dockerfile
-    container_name: ng-resume-be
+    container_name: ng-resume-be-1
     ports:
-      - '8040:8040'
+      - 3000:3000
     environment:
       - DB_HOST=host.docker.internal
+      - USER_NAME=postgres
+      - PASSWORD=postgres
+      - DB=postgres
+      - PORT=5555
