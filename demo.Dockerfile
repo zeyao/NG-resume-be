@@ -12,6 +12,6 @@ RUN npm i -g rimraf
 
 RUN npm run build
 
-EXPOSE 8040
+EXPOSE 3000
 
 CMD ["npm", "run", "start"]
