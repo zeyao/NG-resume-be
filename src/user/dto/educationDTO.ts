@@ -10,4 +10,6 @@ export class EducationDTO {
     start : string;
 
     end : string;
+
+    honorsAndGrade : string;
 }

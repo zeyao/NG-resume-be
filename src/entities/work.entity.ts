@@ -12,15 +12,6 @@ export class Work extends BaseEntity {
 
     @Column()
     location : string;
-
-    @Column()
-    designations : string;
-
-    @Column()
-    startDate : Date
-
-    @Column({nullable : true})
-    endDate : Date
     
     @Column({type : 'text', array: true})
     descriptions: string[]
