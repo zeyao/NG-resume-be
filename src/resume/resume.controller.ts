@@ -14,6 +14,20 @@ import { DesignationDTO } from "src/user/dto/designationsDTO";
 @Controller('resume')
 export class ResumeController {
     private logger = new Logger('ResumeController');
+    private months: Map<string, number> = new Map([
+        ["january", 1],
+        ["february", 2],
+        ["march", 3],
+        ["april", 4],
+        ["may", 5],
+        ["june", 6],
+        ["july", 7],
+        ["august", 8],
+        ["september", 9],
+        ["october", 10],
+        ["november", 11],
+        ["december", 12],
+    ]);
     constructor(private resumeService: ResumeService) {       
     }
 
@@ -51,7 +65,7 @@ export class ResumeController {
         }
         resume.awardAndCertifications = awardAndCertifications
 
-        this.logger.log(`Create user :  ${resume}`)
+        this.logger.log(`Create resume :  ${resume}`)
         return this.resumeService.saveResume(resume);
     }
 
@@ -109,25 +123,11 @@ export class ResumeController {
         }
         const month:string = dateArr[0].toLowerCase()
         const yearNumber:number = +dateArr[1]
-
-        const months = [
-            "january",
-            "february",
-            "march",
-            "april",
-            "may",
-            "june",
-            "july",
-            "august",
-            "september",
-            "october",
-            "november",
-            "december"
-        ];
-        
-        let monthNumber = (months.indexOf(month) + 1);
-        let date = new Date(yearNumber, monthNumber)
-        return date
+        if (!this.months.has(month)) {
+            throw Error(`Input month is not valid  ${month}`)
+        }
+        const monthNumber = this.months.get(month);
+        return new Date(yearNumber, monthNumber)
     }
 
 }
