@@ -33,13 +33,13 @@ export class Resume extends BaseEntity {
     @ManyToOne(() => User, (user) => user.id)
     user : User
 
-    @OneToMany(() => Work, (work) => work.id)
+    @OneToMany(() => Work, (work) => work.id, {cascade: true})
     works : Work[];
 
-    @OneToMany(() => Education, (e) => e.id)
+    @OneToMany(() => Education, (e) => e.id, {cascade: true})
     educations : Education[];
 
-    @OneToMany(() => AwardAndCertification, (a) => a.id)
+    @OneToMany(() => AwardAndCertification, (a) => a.id, {cascade: true})
     awardAndCertifications : AwardAndCertification[];
 
     @CreateDateColumn()

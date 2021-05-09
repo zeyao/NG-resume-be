@@ -57,30 +57,6 @@
         "Redesigned our SaaS-based airport map UI following the industry standard to support up to 5x more data on the viewport.",
         "Analyzed post-release statistics and highlighted key takeaways to global senior management for continuous improvement."
       ]
-    },
-    {
-      "company": "works applications co., ltd.",
-      "location": "Singapore",
-      "designations": ["Software Engineer"],
-      "start": "October 2017",
-      "end" : "June 2018",
-      "descriptions": [
-        "Implemented new features of a mobile application for human resource management in plain JavaScript.",
-        "Designed various ways to improve application usability and reduce user input using InVision..",
-        "Collaborated with regional product and quality assurance teams throughout the release cycle"
-      ]
-    },
-    {
-      "company": "singapore university of technology and design",
-      "location": "Singapore",
-      "designations": ["Research Officer"],
-      "start": "October 2016", 
-      "end": "September 2017",
-      "descriptions": [
-        "Published a novel open-loop control algorithm for improved locomotion of spherical rolling robots.",
-        "Implemented and fine-tuned a new dead-reckoning localization algorithm specifically for VIRGO.",
-        "Validated experimental data using MATLAB, and designed mechanical improvements using SOLIDWORKS."
-      ]
     }
   ],
   "education": [

@@ -12,15 +12,6 @@ export class Work extends BaseEntity {
 
     @Column()
     location : string;
-
-    @Column()
-    designations : string;
-
-    @Column()
-    startDate : Date
-
-    @Column({nullable : true})
-    endDate : Date
     
     @Column({type : 'text', array: true})
     descriptions: string[]
@@ -28,7 +19,7 @@ export class Work extends BaseEntity {
     @ManyToOne(() => Resume, (resume) => resume.id)
     resume : Resume
 
-    @OneToMany(() => Designation, (d) => d.id)
+    @OneToMany(() => Designation, (d) => d.id, {cascade: true})
     designation : Designation[];
 
     @CreateDateColumn()
