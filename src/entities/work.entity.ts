@@ -19,7 +19,7 @@ export class Work extends BaseEntity {
     @ManyToOne(() => Resume, (resume) => resume.id)
     resume : Resume
 
-    @OneToMany(() => Designation, (d) => d.id)
+    @OneToMany(() => Designation, (d) => d.id, {cascade: true})
     designation : Designation[];
 
     @CreateDateColumn()

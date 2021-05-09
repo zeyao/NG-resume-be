@@ -23,7 +23,6 @@ export class ResumeController {
         this.logger.log(`User start to create task : ${JSON.stringify(body)} `);
         console.log(body.header)
         const resume = new Resume()
-        //TODO convert dto -> entity
         resume.name = body.header.name;
         resume.phone = body.header.phone;
         resume.email = body.header.email;
@@ -31,21 +30,21 @@ export class ResumeController {
         resume.rightDetail = body.header.rightDetail;
         resume.profile = body.profile;
         resume.competencies = body.competencies;
-        var works:Work[];
+        const works:Work[] = []
         for (const work of body.work) {
-            let workEntity = this.convertWorkToEntity(work)
+            const workEntity = this.convertWorkToEntity(work)
             works.push(workEntity);
         }
         resume.works = works
 
-        var educations:Education[];
+        const educations:Education[] = []
         for (const education of body.education) {
             let educationEntity = this.convertEducationDTOToEntity(education)
             educations.push(educationEntity);
         }
         resume.educations = educations
 
-        var awardAndCertifications: AwardAndCertification[];
+        const awardAndCertifications: AwardAndCertification[] = []
         for (const awardAndCertification of body.awardsAndCertifications) {
             let awardawardEntity = this.convertAwardDTOToEntity(awardAndCertification)
             awardAndCertifications.push(awardawardEntity);
@@ -61,7 +60,7 @@ export class ResumeController {
         workEntity.company = work.company
         workEntity.location = work.location
         workEntity.descriptions = work.descriptions
-        var designations: Designation[]
+        const designations: Designation[] = []
 
         for (const designationDTO of work.designations) {
             const designation = this.convertDesignationToEntity(designationDTO)
@@ -87,11 +86,9 @@ export class ResumeController {
         const education = new Education()
         education.institution = educationDTO.institution
         education.qualification = educationDTO.qualification.toString()
-        education.honorsAndGrade = educationDTO.honorsAndGrade  
+        education.honorsAndGrade = educationDTO.honorsAndGrade
         education.startDate = this.convertStringToDate(educationDTO.start)
-        if (educationDTO.end != null) {
-            education.endDate = this.convertStringToDate(educationDTO.end)
-        }
+        education.endDate = this.convertStringToDate(educationDTO.end)
         return education
     }
 
@@ -103,11 +100,17 @@ export class ResumeController {
     }
 
     convertStringToDate(dateStr: string) {
-        var dateArr:string[] = dateStr.split(" ")
-        var month:string = dateArr[0].toLowerCase()
-        var yearNumber:number = +dateArr[1]
+        if (!dateStr || dateStr.length < 0) {
+            return null
+        }
+        const dateArr:string[] = dateStr.split(" ")
+        if (dateArr.length < 1) {
+            return null
+        }
+        const month:string = dateArr[0].toLowerCase()
+        const yearNumber:number = +dateArr[1]
 
-        var months = [
+        const months = [
             "january",
             "february",
             "march",
@@ -122,7 +125,7 @@ export class ResumeController {
             "december"
         ];
         
-        var monthNumber = (months.indexOf(month) + 1);
+        let monthNumber = (months.indexOf(month) + 1);
         let date = new Date(yearNumber, monthNumber)
         return date
     }
